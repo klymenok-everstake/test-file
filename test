@@ -1,0 +1,25 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: my-server
+    password: "$6$rounds=4096$6V8l8z9xL6s$Y6z9PQ/ieoiEEf1"
+    username: myuser
+  keyboard:
+    layout: us
+  locale: en_US
+  storage:
+    layout:
+      name: lvm
+  ssh:
+    install-server: true
+    allow-pw: true
+  packages:
+    - vim
+    - curl
+  user-data:
+    apt:
+      preserve_sources_list: false
+    disable_root: true
+  late-commands:
+    - echo "Installation Complete" > /target/etc/motd
